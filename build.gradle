@@ -71,4 +71,27 @@ ext {
     espressoVersion = '3.0.1'
     uiAuomatorVersion = '2.1.1'
 
+    // library
+    supportLibAppCompat="com.android.support:appcompat-v7:$supportLibraryVersion"
+    supportLibDesign="com.android.support:design:$supportLibraryVersion"
+    constraintLayout="com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    daggerCompiler="com.google.dagger:dagger-compiler:$daggerVersion"
+    dagger="com.google.dagger:dagger:$daggerVersion"
+    daggerAndroid="com.google.dagger:dagger-android:$daggerVersion"
+    daggerAndroidSupport="com.google.dagger:dagger-android-support:$daggerVersion"
+    daggerProcessor="com.google.dagger:dagger-android-processor:$daggerVersion"
+    retrofit="com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofitGsonConverter="com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    retrofitRxAdapter="com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    gson="com.google.code.gson:gson:$gsonVersion"
+    butterknife="com.jakewharton:butterknife:$butterKnifeVersion"
+    butterKnifeCompiler="com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    rxJava="io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    rxAndroid="io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    archExtension="android.arch.lifecycle:extensions:$lifeCycleVersion"
+    archCompiler="android.arch.lifecycle:compiler:$lifeCycleVersion"
+    roomRuntime="android.arch.persistence.room:runtime:$lifeCycleVersion"
+    roomCompiler="android.arch.persistence.room:compiler:$lifeCycleVersion"
+    archPaging="android.arch.paging:runtime:$pagingVersion"
+
 }

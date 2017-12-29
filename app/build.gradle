@@ -28,46 +28,46 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Android core
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
-    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    implementation rootProject.ext.supportLibAppCompat
+    implementation rootProject.ext.supportLibDesign
+    implementation rootProject.ext.constraintLayout
 
     // Dagger core
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
-    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    annotationProcessor rootProject.ext.daggerCompiler
+    compile rootProject.ext.dagger
 
     // Dagger Android
-    compile "com.google.dagger:dagger-android:$rootProject.ext.daggerVersion"
+    compile rootProject.ext.daggerAndroid
     // if you use the support libraries
-    compile "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
+    compile rootProject.ext.daggerAndroidSupport
+    annotationProcessor rootProject.ext.daggerProcessor
 
     // Retrofit
-    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    compile rootProject.ext.retrofit
+    compile rootProject.ext.retrofitGsonConverter
+    compile rootProject.ext.retrofitRxAdapter
 
     // Gson
-    compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    compile rootProject.ext.gson
 
     // ButterKnife
-    compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    compile rootProject.ext.butterknife
+    annotationProcessor rootProject.ext.butterKnifeCompiler
 
     // ReactiveX
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+    compile rootProject.ext.rxJava
+    compile rootProject.ext.rxAndroid
 
     // LifeCycle - ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifeCycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.ext.lifeCycleVersion"
+    implementation rootProject.ext.archExtension
+    annotationProcessor rootProject.ext.archCompiler
 
     // LifeCycle - Room
-    implementation "android.arch.persistence.room:runtime:$rootProject.ext.lifeCycleVersion"
-    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.ext.lifeCycleVersion"
+    implementation rootProject.ext.roomRuntime
+    annotationProcessor rootProject.ext.roomCompiler
 
     // LifeCycle - Paging
-    implementation "android.arch.paging:runtime:$rootProject.ext.pagingVersion"
+    implementation rootProject.ext.archPaging
 
     // Test
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
