@@ -41,7 +41,7 @@ ext {
     cardViewVersion = '23.3.0'
     retrofitVersion = '2.3.0'
     gsonVersion = '2.7'
-    retrofitLoggingIntercepterVersion = '3.3.1'
+    retrofitLoggerVersion = '3.3.1'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.0'
     facebookVersion = '4.8.2'
@@ -83,6 +83,7 @@ ext {
     retrofit="com.squareup.retrofit2:retrofit:$retrofitVersion"
     retrofitGsonConverter="com.squareup.retrofit2:converter-gson:$retrofitVersion"
     retrofitRxAdapter="com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    retrofitLogger="com.squareup.okhttp3:logging-interceptor:$retrofitLoggerVersion"
     gson="com.google.code.gson:gson:$gsonVersion"
     butterknife="com.jakewharton:butterknife:$butterKnifeVersion"
     butterKnifeCompiler="com.jakewharton:butterknife-compiler:$butterKnifeVersion"

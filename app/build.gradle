@@ -46,6 +46,7 @@ dependencies {
     compile rootProject.ext.retrofit
     compile rootProject.ext.retrofitGsonConverter
     compile rootProject.ext.retrofitRxAdapter
+    compile rootProject.ext.retrofitLogger
 
     // Gson
     compile rootProject.ext.gson
