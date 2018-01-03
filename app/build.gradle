@@ -46,6 +46,7 @@ dependencies {
     compile rootProject.ext.retrofit
     compile rootProject.ext.retrofitGsonConverter
     compile rootProject.ext.retrofitRxAdapter
+    compile rootProject.ext.retrofitLoggingIntercepter
 
     // Gson
     compile rootProject.ext.gson
@@ -68,6 +69,9 @@ dependencies {
 
     // LifeCycle - Paging
     implementation rootProject.ext.archPaging
+
+    // Html parser
+    compile rootProject.ext.jsoupHtmlParserLib
 
     // Test
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
