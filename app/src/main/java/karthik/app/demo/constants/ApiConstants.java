@@ -6,6 +6,6 @@ package karthik.app.demo.constants;
 
 public class ApiConstants {
 
-    public static String BASE_URL = "";
+    public static String BASE_URL = "https://www.snapdeal.com/";
     public static int TIME_OUT = 15;
 }

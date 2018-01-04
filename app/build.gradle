@@ -32,6 +32,9 @@ dependencies {
     implementation rootProject.ext.supportLibDesign
     implementation rootProject.ext.constraintLayout
 
+    // Glide
+    compile rootProject.ext.glide
+
     // Dagger core
     annotationProcessor rootProject.ext.daggerCompiler
     compile rootProject.ext.dagger
@@ -47,6 +50,9 @@ dependencies {
     compile rootProject.ext.retrofitGsonConverter
     compile rootProject.ext.retrofitRxAdapter
     compile rootProject.ext.retrofitLoggingIntercepter
+
+    // OkHttp
+    compile rootProject.ext.okhttp
 
     // Gson
     compile rootProject.ext.gson
@@ -72,6 +78,9 @@ dependencies {
 
     // Html parser
     compile rootProject.ext.jsoupHtmlParserLib
+
+    // Html Converter
+    compile rootProject.ext.htmlConverter
 
     // Test
     testImplementation "junit:junit:$rootProject.ext.junitVersion"

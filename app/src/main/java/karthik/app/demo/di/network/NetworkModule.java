@@ -1,5 +1,7 @@
 package karthik.app.demo.di.network;
 
+import com.github.slashrootv200.retrofithtmlconverter.HtmlConverterFactory;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -8,6 +10,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import karthik.app.demo.constants.ApiConstants;
+import karthik.app.demo.data.api.ApiService;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,7 +18,6 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by NiCK on 1/2/2018.
@@ -61,11 +63,17 @@ public class NetworkModule {
     @Singleton
     Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(ApiConstants.BASE_URL)
+                .addConverterFactory(HtmlConverterFactory.create(ApiConstants.BASE_URL))
                 .client(okHttpClient)
                 .build();
 
+    }
+
+    @Provides
+    @Singleton
+    ApiService provideApiService(Retrofit retrofit) {
+        return retrofit.create(ApiService.class);
     }
 }

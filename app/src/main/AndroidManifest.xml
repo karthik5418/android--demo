@@ -3,6 +3,7 @@
     package="karthik.app.demo">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -13,8 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.snapdeal.SnapdealSearchActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
