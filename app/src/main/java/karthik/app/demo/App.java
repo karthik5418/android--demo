@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import karthik.app.demo.di.app.DaggerAppComponent;
 
 /**
  * Created by NiCK on 1/2/2018.
@@ -26,15 +25,15 @@ public class App extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-        initializeComponent();
+       // initializeComponent();
     }
 
-    private void initializeComponent() {
+    /*private void initializeComponent() {
         DaggerAppComponent.builder()
                 .application(this)
                 .build()
                 .inject(this);
-    }
+    }*/
 
     @Override
     public AndroidInjector<Activity> activityInjector() {
