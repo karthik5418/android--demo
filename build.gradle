@@ -44,10 +44,11 @@ ext {
     multiDexVersion = '1.0.1'
     retrofitVersion = '2.3.0'
     gsonVersion = '2.7'
-    retrofitLoggingIntercepterVersion = '3.3.1'
+    okhttpVersion = '3.4.0'
+    retrofitLoggingIntercepterVersion = '3.4.0'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.0'
-    picassoVersion = '2.5.2'
+    glideVersion = '4.0.0-RC1'
     permisoVersion = '0.3.0'
     daggerVersion = '2.14.1'
     daggerComplieTimeErrorVersion = '10.0-b28'
@@ -77,8 +78,10 @@ ext {
     retrofit="com.squareup.retrofit2:retrofit:$retrofitVersion"
     retrofitGsonConverter="com.squareup.retrofit2:converter-gson:$retrofitVersion"
     retrofitRxAdapter="com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
     retrofitLoggingIntercepter="com.squareup.okhttp3:logging-interceptor:$retrofitLoggingIntercepterVersion"
     gson="com.google.code.gson:gson:$gsonVersion"
+    glide="com.github.bumptech.glide:glide:$glideVersion"
     butterknife="com.jakewharton:butterknife:$butterKnifeVersion"
     butterKnifeCompiler="com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     rxJava="io.reactivex.rxjava2:rxjava:$rxJavaVersion"

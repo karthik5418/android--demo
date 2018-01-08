@@ -27,7 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    // Android core
+    // Android support lib
     implementation rootProject.ext.supportLibAppCompat
     implementation rootProject.ext.supportLibDesign
     implementation rootProject.ext.constraintLayout
@@ -48,8 +48,14 @@ dependencies {
     compile rootProject.ext.retrofitRxAdapter
     compile rootProject.ext.retrofitLoggingIntercepter
 
+    // OkHttp
+    compile rootProject.ext.okhttp
+
     // Gson
     compile rootProject.ext.gson
+
+    // Glide
+    compile rootProject.ext.glide
 
     // ButterKnife
     compile rootProject.ext.butterknife
