@@ -3,6 +3,8 @@ package karthik.app.demo.ui.anim_demo;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -40,12 +42,21 @@ public class AnimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim);
         ButterKnife.bind(this);
-
+        initViewStyle();
         initViewsDown();
         animateIv2();
         animateTextview1();
 
+        getSharedContent();
     }
+
+
+
+    private void initViewStyle() {
+        tv1.setTypeface(tv1.getTypeface(), Typeface.BOLD_ITALIC);
+        tv2.setTypeface(tv2.getTypeface(), Typeface.BOLD_ITALIC);
+    }
+
 
     private void initViewsDown() {
 
@@ -178,6 +189,19 @@ public class AnimActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void getSharedContent() {
+        String receivedAction=getIntent().getAction();
+        if(receivedAction.equals(Intent.ACTION_SEND)){
+
+            String receivedText=getIntent().getStringExtra(Intent.EXTRA_TEXT);
+
+            if (receivedText != null) {
+                tv3.setText(receivedText);
+            }
+        }
 
     }
 
