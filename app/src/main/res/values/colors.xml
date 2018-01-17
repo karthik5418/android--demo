@@ -2,5 +2,15 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#303F9F</color>
+
+
+
+    <color name="person_1">#C0392B</color>
+    <color name="person_2">#6C3483</color>
+    <color name="person_3">#F39C12</color>
+    <color name="person_4">#21618C</color>
+    <color name="person_5">#95A5A6</color>
+    <color name="person_6">#145A32</color>
+    <color name="person_7">#FF4081</color>
 </resources>

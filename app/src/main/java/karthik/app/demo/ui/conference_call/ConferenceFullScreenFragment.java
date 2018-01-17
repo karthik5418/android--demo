@@ -1,4 +1,4 @@
-package karthik.app.demo;
+package karthik.app.demo.ui.conference_call;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by NiCK on 1/2/2018.
+ * Created by Flochat on 17-01-2018.
  */
 
-public class BaseFragment extends Fragment {
+public class ConferenceFullScreenFragment extends Fragment {
+
+
+
 
 
     @Nullable

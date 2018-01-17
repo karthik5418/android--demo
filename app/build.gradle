@@ -33,14 +33,14 @@ dependencies {
     implementation rootProject.ext.constraintLayout
 
     // Dagger core
-    annotationProcessor rootProject.ext.daggerCompiler
-    compile rootProject.ext.dagger
+   // annotationProcessor rootProject.ext.daggerCompiler
+   // compile rootProject.ext.dagger
 
     // Dagger Android
-    compile rootProject.ext.daggerAndroid
+   // compile rootProject.ext.daggerAndroid
     // if you use the support libraries
-    compile rootProject.ext.daggerAndroidSupport
-    annotationProcessor rootProject.ext.daggerProcessor
+   // compile rootProject.ext.daggerAndroidSupport
+   // annotationProcessor rootProject.ext.daggerProcessor
 
     // Retrofit
     compile rootProject.ext.retrofit

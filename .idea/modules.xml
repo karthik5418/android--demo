@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyDemoApp.iml" filepath="$PROJECT_DIR$/MyDemoApp.iml" />
+      <module fileurl="file://C:\Users\Flochat\AndroidStudioProjects\android--demo\MyDemoApp.iml" filepath="C:\Users\Flochat\AndroidStudioProjects\android--demo\MyDemoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android--demo.iml" filepath="$PROJECT_DIR$/android--demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
