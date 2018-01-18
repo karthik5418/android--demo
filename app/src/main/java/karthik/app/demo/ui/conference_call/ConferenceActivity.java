@@ -1,17 +1,17 @@
 package karthik.app.demo.ui.conference_call;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +22,19 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import karthik.app.demo.R;
 import karthik.app.demo.data.adapter.ConferenceAdapter;
+import karthik.app.demo.data.adapter.OtherPersonAdapter;
 import karthik.app.demo.data.model.ConferenceModel;
 import karthik.app.demo.listeners.HideAddListener;
 import karthik.app.demo.listeners.HideRemoveListener;
 import karthik.app.demo.listeners.LayoutChangeListener;
+import karthik.app.demo.listeners.FullScreenListener;
+import karthik.app.demo.listeners.PersonChangedListener;
 
 /**
  * Created by Flochat on 17-01-2018.
  */
 
-public class ConferenceListFragment extends Fragment implements HideAddListener, HideRemoveListener, LayoutChangeListener {
+public class ConferenceActivity extends AppCompatActivity implements HideAddListener, HideRemoveListener, LayoutChangeListener, FullScreenListener, PersonChangedListener {
 
     @BindView(R.id.rv_conference)
     RecyclerView rvConference;
@@ -40,56 +43,52 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
     @BindView(R.id.bt_add)
     Button btAdd;
     Unbinder unbinder;
-    private View mView;
+    @BindView(R.id.cl_list)
+    ConstraintLayout clList;
+    @BindView(R.id.cl_full_screen)
+    ConstraintLayout clFullScreen;
+    @BindView(R.id.tv_selected_name)
+    TextView tvSelectedName;
+    @BindView(R.id.cl_selected)
+    ConstraintLayout clSelected;
+    @BindView(R.id.rv_other_person)
+    RecyclerView rvOtherPerson;
+    @BindView(R.id.tv_my_name)
+    TextView tvMyName;
+    @BindView(R.id.cl_me)
+    ConstraintLayout clMe;
+    @BindView(R.id.bt_ss)
+    Button btSs;
 
-
-    // parent activity
-    private Context mContext;
-    private ConferenceCallActivity mActivity;
 
     // layout
     private GridLayoutManager layoutManager;
 
     // data
     private List<ConferenceModel> list;
+    private List<ConferenceModel> remainingPersonList;
     private ConferenceModel model;
     private ConferenceAdapter adapter;
+    private OtherPersonAdapter otherPersonAdapter;
 
-    public ConferenceListFragment() {
-    }
+    // flag
+    private boolean isFullScreenOn = false;
 
-    public static ConferenceListFragment newInstance() {
-        ConferenceListFragment fragment = new ConferenceListFragment();
-        return fragment;
-    }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = context;
-        mActivity = (ConferenceCallActivity) context;
-    }
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_conference_call);
+        ButterKnife.bind(this);
 
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        mView = inflater.inflate(R.layout.fragment_conference, container, false);
-        unbinder = ButterKnife.bind(this, mView);
-        return mView;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         initView();
         initBlankData();
     }
 
     private void initView() {
-        layoutManager = new GridLayoutManager(mContext, 2);
+        layoutManager = new GridLayoutManager(ConferenceActivity.this, 2);
         rvConference.setLayoutManager(layoutManager);
+        rvOtherPerson.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
@@ -108,8 +107,18 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
                 int height = rvConference.getMeasuredHeight();
 
                 list = new ArrayList<>(7);
-                adapter = new ConferenceAdapter(mContext, list,height ,ConferenceListFragment.this, ConferenceListFragment.this, ConferenceListFragment.this);
+
+                adapter = new ConferenceAdapter(ConferenceActivity.this, list, height, ConferenceActivity.this, ConferenceActivity.this, ConferenceActivity.this, ConferenceActivity.this);
                 rvConference.setAdapter(adapter);
+
+
+                ConferenceModel model = new ConferenceModel();
+                model.setColor(getColor());
+                model.setPerson_position(1);
+                // only 1st is Me.
+                model.setMe(true);
+                model.setName("My self");
+                adapter.addMember(model);
 
             }
         });
@@ -119,18 +128,10 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
     @OnClick(R.id.bt_add)
     public void addMemberToConference() {
         ConferenceModel model = new ConferenceModel();
-
         model.setColor(getColor());
         model.setPerson_position(1);
-
-        if (list.size() == 0) { // only 1st is Me.
-            model.setMe(true);
-            model.setName("My self");
-        } else {
-            model.setMe(false);
-            model.setName("Other people = " + adapter.getItemCount());
-        }
-
+        model.setMe(false);
+        model.setName("Other people = " + adapter.getItemCount());
         adapter.addMember(model);
     }
 
@@ -138,6 +139,17 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
     public void removeMemberFromConference() {
         adapter.removeMember(null);
     }
+
+
+    @OnClick(R.id.bt_ss)
+    public void goBack() {
+        if (isFullScreenOn) {
+            clList.setVisibility(View.VISIBLE);
+            clFullScreen.setVisibility(View.GONE);
+            isFullScreenOn = false;
+        }
+    }
+
 
 
     private int getColor() {
@@ -180,12 +192,6 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-    @Override
     public void onLayoutChanged(final int size) {
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -225,5 +231,55 @@ public class ConferenceListFragment extends Fragment implements HideAddListener,
             }
         });
 
+    }
+
+    @Override
+    public void onFullScreen(ConferenceModel model) {
+
+        isFullScreenOn = true;
+
+        clList.setVisibility(View.GONE);
+        clFullScreen.setVisibility(View.VISIBLE);
+
+        showSelectedPerson();
+    }
+
+
+    private void showSelectedPerson() {
+
+        remainingPersonList = new ArrayList<>(5);
+
+        for (ConferenceModel conferenceModel : list) {
+            if (conferenceModel.isMe()) {
+                clMe.setBackgroundColor(conferenceModel.getColor());
+                tvMyName.setText(conferenceModel.getName());
+            }
+            if (conferenceModel.isSelected()) {
+                clSelected.setBackgroundColor(conferenceModel.getColor());
+                tvSelectedName.setText(conferenceModel.getName());
+            }
+
+            if (!conferenceModel.isMe() && !conferenceModel.isSelected()) {
+
+                remainingPersonList.add(conferenceModel);
+            }
+        }
+
+        otherPersonAdapter = new OtherPersonAdapter(ConferenceActivity.this, remainingPersonList, ConferenceActivity.this);
+        rvOtherPerson.setAdapter(otherPersonAdapter);
+    }
+
+    @Override
+    public void onPersonChanged(ConferenceModel model) {
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i)==(model)){
+                list.get(i).setSelected(true);
+            }
+            else {
+                list.get(i).setSelected(false);
+            }
+        }
+        showSelectedPerson();
     }
 }

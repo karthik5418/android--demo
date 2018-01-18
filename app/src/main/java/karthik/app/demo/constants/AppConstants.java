@@ -7,5 +7,5 @@ package karthik.app.demo.constants;
 public class AppConstants {
 
     public static int MAX_PEOPLE=7;
-    public static int MIN_PEOPLE=0;
+    public static int MIN_PEOPLE=1;
 }

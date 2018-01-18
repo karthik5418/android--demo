@@ -11,6 +11,7 @@ public class ConferenceModel {
     private String name = "";
     private int person_position;
     private int height=0;
+    private boolean isSelected=false;
 
     public boolean isMe() {
         return isMe;
@@ -50,5 +51,13 @@ public class ConferenceModel {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }
