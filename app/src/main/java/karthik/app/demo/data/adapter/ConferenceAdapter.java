@@ -168,7 +168,7 @@ public class ConferenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     model.setSelected(false);
                 }
             }
-            //fullScreenListener.onFullScreen(model);
+            fullScreenListener.onFullScreen(model);
         }
     }
 }
