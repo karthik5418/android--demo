@@ -66,7 +66,7 @@ public class ConferenceActivity extends AppCompatActivity implements HideAddList
 
     // data
     private List<ConferenceModel> list;
-    private List<ConferenceModel> remainingPersonList;
+    private List<ConferenceModel> otherPersonList;
     private ConferenceModel model;
     private ConferenceAdapter adapter;
     private OtherPersonAdapter otherPersonAdapter;
@@ -178,7 +178,6 @@ public class ConferenceActivity extends AppCompatActivity implements HideAddList
         } else {
             btAdd.setVisibility(View.VISIBLE);
         }
-        rvConference.scrollToPosition(list.size() - 1);
     }
 
     @Override
@@ -188,7 +187,6 @@ public class ConferenceActivity extends AppCompatActivity implements HideAddList
         } else {
             btRemove.setVisibility(View.VISIBLE);
         }
-        rvConference.scrollToPosition(list.size() - 1);
     }
 
     @Override
@@ -247,7 +245,7 @@ public class ConferenceActivity extends AppCompatActivity implements HideAddList
 
     private void showSelectedPerson() {
 
-        remainingPersonList = new ArrayList<>(5);
+        otherPersonList = new ArrayList<>(5);
 
         for (ConferenceModel conferenceModel : list) {
             if (conferenceModel.isMe()) {
@@ -261,11 +259,11 @@ public class ConferenceActivity extends AppCompatActivity implements HideAddList
 
             if (!conferenceModel.isMe() && !conferenceModel.isSelected()) {
 
-                remainingPersonList.add(conferenceModel);
+                otherPersonList.add(conferenceModel);
             }
         }
 
-        otherPersonAdapter = new OtherPersonAdapter(ConferenceActivity.this, remainingPersonList, ConferenceActivity.this);
+        otherPersonAdapter = new OtherPersonAdapter(ConferenceActivity.this, otherPersonList, ConferenceActivity.this);
         rvOtherPerson.setAdapter(otherPersonAdapter);
     }
 
