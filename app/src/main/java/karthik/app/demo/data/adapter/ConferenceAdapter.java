@@ -29,8 +29,8 @@ import karthik.app.demo.listeners.LayoutChangeListener;
 
 public class ConferenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
-    private Activity mActivity;
+    //private Context mContext;
+    //private Activity mActivity;
     private List<ConferenceModel> list;
     private ConferenceModel model;
 
